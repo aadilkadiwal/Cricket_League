@@ -2,14 +2,14 @@ from django.db import models
 
 class Country(models.Model):
     name = models.CharField(max_length=30)
-    logo = models.ImageField(default='default.jpg', upload_to='Country')
+    flag = models.ImageField(default='default.jpg', upload_to='Country')
 
     def __str__(self):
         return self.name
 
-class Venue(models.Model):
-    time = models.DateTimeField()
+class Venue(models.Model):   
     stadium_name = models.CharField(max_length=30)
+    city = models.CharField(max_length=30)
     state = models.CharField(max_length=20)
     country = models.ForeignKey(Country, related_name='venues', on_delete=models.DO_NOTHING)
 
@@ -42,12 +42,13 @@ class Player(models.Model):
         return self.name
     
 class Match(models.Model):
+    time = models.DateTimeField()
     team1 = models.ForeignKey(Team, related_name='matchs', on_delete=models.CASCADE)
     team2 = models.ForeignKey(Team, on_delete=models.CASCADE)
     venue = models.ForeignKey(Venue, related_name='matchs', on_delete=models.DO_NOTHING)
 
     def __str__(self):
-        return self.venue
+        return self.time
 
 class MatchSummary(models.Model):
     match_detail = models.ForeignKey(Match, related_name='matchsummarys', on_delete=models.CASCADE)
