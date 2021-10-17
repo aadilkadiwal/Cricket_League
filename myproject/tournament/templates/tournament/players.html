@@ -1,0 +1,15 @@
+{% extends "tournament/base.html" %}
+{% block content %}
+    <br>
+    {% for player in players %}
+        &nbsp;&nbsp;
+        <div class="column" style="overflow: hidden; display: inline-block;">
+            <center>
+                <img class="rounded-circle account-img" src="{{ player.picture.url }}"  width="120" height="100">
+            </center>
+            <p class="aligncenter">
+                <h5><a href="#">{{ player.name }}</a></h5>
+            </p>  
+        </div>
+    {% endfor %}
+{% endblock content %}        

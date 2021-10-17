@@ -1,4 +1,38 @@
 {% extends "tournament/base.html" %}
 {% block content %}
-    <h1>Matches Page</h1>
+    <table class="table">
+        <thead>
+        <tr class="table-secondary">
+            <th scope="col">MATCH NO</th>
+            <th scope="col">DATE</th>
+            <th scope="col">UTC TIME</th>
+            <th scope="col">TEAM 1</th>
+            <th scope="col">TEAM 2</th>
+            <th scope="col">VENUE</th>
+        </tr>
+        </thead>
+        <tbody>  
+            {% for match in matchs %}
+                <tr class="table-warning">
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>
+                       {{ match.time.date|date:"d F, Y" }}
+                    </td>
+                    <td>{{ match.time.time }}</td>
+                    <td>
+                        <img class="rounded-circle account-img" src="{{ match.team1.logo.url }}"  width="50" height="40">
+                        <a href="#">{{ match.team1 }}</a>
+                    </td>
+                    <td>
+                        <img class="rounded-circle account-img" src="{{ match.team2.logo.url }}"  width="50" height="40">
+                        <a href="#">{{ match.team2 }}</a>
+                    </td>
+                    <td>
+                        <img class="rounded-circle account-img" src="{{ match.venue.country.flag.url }}"  width="50" height="40">
+                        {{ match.venue }}, {{ match.venue.city }}, {{ match.venue.state}}, {{ match.venue.country }}
+                    </td>
+                </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
 {% endblock content %}

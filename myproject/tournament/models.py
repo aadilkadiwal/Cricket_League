@@ -48,7 +48,7 @@ class Match(models.Model):
     venue = models.ForeignKey(Venue, related_name='matchs', on_delete=models.DO_NOTHING)
 
     def __str__(self):
-        return self.time
+        return f'{self.team1} VS {self.team2} {self.time}'
 
 class MatchSummary(models.Model):
     match_detail = models.ForeignKey(Match, related_name='matchsummarys', on_delete=models.CASCADE)

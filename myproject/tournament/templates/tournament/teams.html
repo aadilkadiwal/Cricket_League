@@ -1,0 +1,29 @@
+{% extends "tournament/base.html" %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr class="table-secondary">
+            <th scope="col">TEAM</th>
+            <th scope="col">TEAM LOGO</th>
+            <th scope="col">TEAM NAME</th>
+        </tr>
+        </thead>
+        <tbody>  
+            {% for team in teams %}
+                <tr class="table-warning">
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>
+                        <img class="rounded-circle account-img" src="{{ team.logo.url }}"  width="150" height="100">
+                    </td>
+                    <td>
+                        <h2><a href="#">{{ team.name }}</a></h2>
+                        <h4>Country : {{ team.country.name }}
+                        <img class="rounded-circle account-img" src="{{ team.country.flag.url }}"  width="40" height="25">
+                        </h4>
+                    </td>
+                   
+                </tr>
+            {% endfor %} 
+        </tbody>
+    </table> 
+{% endblock content %}
