@@ -8,7 +8,7 @@
                 <img class="rounded-circle account-img" src="{{ player.picture.url }}"  width="120" height="100">
             </center>
             <p class="aligncenter">
-                <h5><a href="#">{{ player.name }}</a></h5>
+                <h5><a href="{% url 'player-detail' pk=player.pk %}">{{ player.name }}</a></h5>
             </p>  
         </div>
     {% endfor %}

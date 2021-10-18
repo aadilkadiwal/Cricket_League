@@ -1,0 +1,43 @@
+{% extends "tournament/base.html" %}
+{% block content %}
+    <center>
+        <h1>
+            <img class="rounded-circle account-img" src="{{ match.team1.logo.url }}"  width="50" height="40">
+            <a href="{% url 'team-detail' pk=match.team1.pk %}">{{ match.team1 }}</a> vs 
+            <a href="{% url 'team-detail' pk=match.team2.pk %}">{{ match.team2 }}</a>
+            <img class="rounded-circle account-img" src="{{ match.team2.logo.url }}"  width="50" height="40">
+        </h1>
+        <h4>
+            UTC TIME : {{ match.time.time }}
+        </h4>
+        <h4>
+            DATE : {{ match.time.date|date:"d F, Y" }}
+        </h4>
+        <h4>
+            VENUE : <a href="#">{{ match.venue.stadium_name }} stadium</a>
+        </h4>
+            {% for result in match.matchsummarys.all %}
+                <h3>
+                    Winner : <a href="{% url 'team-detail' pk=result.match_winner.pk %}">{{ result.match_winner }}</a>
+                    <img class="rounded-circle account-img" src="{{ result.match_winner.logo.url }}"  width="40" height="30">
+                </h3>
+                <h3>
+                    Looser : <a href="{% url 'team-detail' pk=result.match_looser.pk %}">{{ result.match_looser }}</a>
+                    <img class="rounded-circle account-img" src="{{ result.match_looser.logo.url }}"  width="40" height="30">
+                </h3>
+                <h3>
+                    Man of the Match : <a href="{% url 'player-detail' pk=result.man_of_the_match.pk %}">{{ result.man_of_the_match }}</a>
+                    <img class="rounded-circle account-img" src="{{ result.man_of_the_match.picture.url }}"  width="40" height="30">
+                </h3>
+                <h3>
+                    Bowler of the Match : <a href="{% url 'player-detail' pk=result.bowler_of_the_match.pk %}">{{ result.bowler_of_the_match }}</a>
+                    <img class="rounded-circle account-img" src="{{ result.bowler_of_the_match.picture.url }}"  width="40" height="30">
+                </h3>
+                <h3>
+                    Best Fielder : <a href="{% url 'player-detail' pk=result.best_fielder.pk %}">{{ result.best_fielder }}</a>
+                    <img class="rounded-circle account-img" src="{{ result.best_fielder.picture.url }}"  width="40" height="30">
+                </h3>
+
+            {% endfor %}
+    </center>
+{% endblock content %}

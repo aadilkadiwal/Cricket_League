@@ -1,0 +1,21 @@
+{% extends "tournament/base.html" %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr class="table-secondary">
+            <th scope="col">TEAM NAME</th>
+            <th scope="col">SCORE</th>
+        </tr>
+        </thead>
+        <tbody>  
+            {% for team in teams %}
+                <tr class="table-warning">
+                    <td>
+                       <a href="{% url 'team-detail' pk=team.id %}">{{ team.name }}</a>
+                    </td>
+                    <td> {{ team.points }}</td> 
+                </tr>
+            {% endfor %} 
+        </tbody>
+    </table> 
+{% endblock content %}

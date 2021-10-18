@@ -1,0 +1,10 @@
+{% extends "tournament/base.html" %}
+{% block content %}
+    <center>
+        <h1>Stadium name : {{ venue.stadium_name }}</h1>
+        <h1>City : {{ venue.city }}</h1>
+        <h1>State : {{ venue.state }}</h1>
+        <h1>Country : {{ venue.country }}</h1>
+        <p><img class="rounded-circle account-img" src="{{ venue.country.flag.url }}"  width="100" height="80"></p>
+    </center>
+{% endblock content %}

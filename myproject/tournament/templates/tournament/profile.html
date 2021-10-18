@@ -1,0 +1,16 @@
+{% extends "tournament/base.html" %}
+{% block content %}
+    <center>
+        <h1>Players Profile</h1>
+        <img class="rounded-circle account-img" src="{{ player.picture.url }}"  width="180" height="150">
+        <h2>{{ player.name }}</h2>
+        <h3>Team : {{ player.team }}
+        <img class="rounded-circle account-img" src="{{ player.team.logo.url }}"  width="45" height="35">
+        </h3>
+        <h3>Date of Birth : {{ player.dob|date:"d F, Y" }}</h3>
+        <h3>Role : {{ player.role }}</h3>
+        <h3>Birth Place : {{ player.birth_place }}
+        <img class="rounded-circle account-img" src="{{ player.birth_place.flag.url }}"  width="45" height="35">
+        </h3>
+    </center>
+{% endblock content %}

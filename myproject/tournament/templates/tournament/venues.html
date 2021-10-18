@@ -1,0 +1,28 @@
+{% extends "tournament/base.html" %}
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr class="table-secondary">
+            <th scope="col">NO</th>
+            <th scope="col">STADIUM NAME</th>
+            <th scope="col">CITY</th>
+            <th scope="col">STATE</th>
+            <th scope="col">COUNTRY</th>
+        </tr>
+        </thead>
+        <tbody>  
+            {% for venue in venues %}
+                <tr class="table-warning">
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ venue.stadium_name }}</td>
+                    <td>{{ venue.city }}</td>
+                    <td>{{ venue.state }}</td>
+                    <td>
+                        {{ venue.country }}
+                        <img class="rounded-circle account-img" src="{{ venue.country.flag.url }}"  width="40" height="25">
+                    </td>
+                </tr>
+            {% endfor %} 
+        </tbody>
+    </table> 
+{% endblock content %}

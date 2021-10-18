@@ -24,6 +24,10 @@ class Team(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def points(self):
+        return self.matchsummarys.filter(match_winner=self).count() * 2
+
 class Player(models.Model):
 
     class Role(models.TextChoices):
@@ -48,7 +52,7 @@ class Match(models.Model):
     venue = models.ForeignKey(Venue, related_name='matchs', on_delete=models.DO_NOTHING)
 
     def __str__(self):
-        return f'{self.team1} VS {self.team2} {self.time}'
+        return f'{self.team1.name} VS {self.team2.name}'
 
 class MatchSummary(models.Model):
     match_detail = models.ForeignKey(Match, related_name='matchsummarys', on_delete=models.CASCADE)
@@ -59,4 +63,4 @@ class MatchSummary(models.Model):
     best_fielder = models.ForeignKey(Player, on_delete=models.DO_NOTHING)
  
     def __str__(self):
-        return self.match_detail
+        return f'{self.match_winner.name}'

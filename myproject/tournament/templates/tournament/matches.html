@@ -9,6 +9,7 @@
             <th scope="col">TEAM 1</th>
             <th scope="col">TEAM 2</th>
             <th scope="col">VENUE</th>
+            <th scope="col">MATCH SUMMARY</th>
         </tr>
         </thead>
         <tbody>  
@@ -21,15 +22,18 @@
                     <td>{{ match.time.time }}</td>
                     <td>
                         <img class="rounded-circle account-img" src="{{ match.team1.logo.url }}"  width="50" height="40">
-                        <a href="#">{{ match.team1 }}</a>
+                        <a href="{% url 'team-detail' pk=match.team1.pk %}">{{ match.team1 }}</a>
                     </td>
                     <td>
                         <img class="rounded-circle account-img" src="{{ match.team2.logo.url }}"  width="50" height="40">
-                        <a href="#">{{ match.team2 }}</a>
+                        <a href="{% url 'team-detail' pk=match.team2.pk %}">{{ match.team2 }}</a>
                     </td>
                     <td>
                         <img class="rounded-circle account-img" src="{{ match.venue.country.flag.url }}"  width="50" height="40">
-                        {{ match.venue }}, {{ match.venue.city }}, {{ match.venue.state}}, {{ match.venue.country }}
+                        <a href="{% url 'venue-detail' pk=match.venue.pk %}">{{ match.venue }}</a>
+                    </td>
+                    <td>
+                        <h5><a href="{% url 'match-detail' pk=match.pk %}">view</a></h5>
                     </td>
                 </tr>
             {% endfor %} 
