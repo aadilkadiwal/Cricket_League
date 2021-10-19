@@ -14,7 +14,7 @@
             DATE : {{ match.time.date|date:"d F, Y" }}
         </h4>
         <h4>
-            VENUE : <a href="#">{{ match.venue.stadium_name }} stadium</a>
+            VENUE : <a href="{% url 'venue-detail' pk=match.venue.pk  %}">{{ match.venue.stadium_name }} stadium</a>
         </h4>
             {% for result in match.matchsummarys.all %}
                 <h3>

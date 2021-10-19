@@ -11,6 +11,7 @@
             {% for team in teams %}
                 <tr class="table-warning">
                     <td>
+                        <img class="rounded-circle account-img" src="{{ team.logo.url }}"  width="50" height="40">
                        <a href="{% url 'team-detail' pk=team.id %}">{{ team.name }}</a>
                     </td>
                     <td> {{ team.points }}</td> 
